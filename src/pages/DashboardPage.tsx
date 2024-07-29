@@ -22,13 +22,12 @@ const items = [
 
 const DashBoardPage: React.FC = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 h-full">
       <div className="grid grid-cols-4 gap-4">
         {items.map((item) => (
           <FigmaItem key={item.id} {...item} />
         ))}
       </div>
-      <button>팀 초대하기</button>
     </div>
   );
 };
