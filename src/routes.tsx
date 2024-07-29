@@ -1,5 +1,6 @@
 import Layout from "./components/Layout";
-import Main from "./pages/Main";
+import InitialPage from "./pages/InitialPage";
+import DashboardPage from "./pages/DashBoardPage";
 
 interface RouteConfig {
   path?: string;
@@ -10,14 +11,11 @@ interface RouteConfig {
 export const routes: RouteConfig[] = [
   {
     element: <Layout />,
-    children: [{ path: "/", element: <Main /> }],
+    children: [
+      { path: "/", element: <InitialPage /> },
+      { path: "/dash", element: <DashboardPage /> },
+    ],
   },
 ];
 
-export default routes.map((route) => ({
-  ...route,
-  children: route.children?.map((child) => ({
-    path: child.path,
-    element: child.element,
-  })),
-}));
+export default routes;
