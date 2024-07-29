@@ -9,7 +9,12 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
-  ignorePatterns: [".eslintrc.cjs", "src/index.css", "tailwind.config.js"],
+  ignorePatterns: [
+    ".eslintrc.cjs",
+    "src/index.css",
+    "tailwind.config.js",
+    "postcss.config.js",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020,
