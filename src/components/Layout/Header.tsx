@@ -1,10 +1,22 @@
+import { useNavigate } from "react-router-dom";
+import { IoMdHome } from "react-icons/io";
+
 import FigDiffLogo from "/logo.png";
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate("/dash");
+  };
+
   return (
-    <header className="flex items-center justify-start h-16 font-bold border-b border-gray-300 pl-4">
-      <img src={FigDiffLogo} alt="FigDiff Logo" className="h-10 mr-3" />
-      <h1>FigDiff</h1>
+    <header className="flex items-center justify-between h-16 font-bold border-b border-gray-300 pl-4 pr-4">
+      <div className="flex items-center">
+        <img src={FigDiffLogo} alt="FigDiff Logo" className="h-10 mr-3" />
+        <h1>FigDiff</h1>
+      </div>
+      <IoMdHome className="text-3xl cursor-pointer" onClick={handleHomeClick} />
     </header>
   );
 };
