@@ -8,6 +8,7 @@ interface History {
   _id: string;
   date: string;
   historyName: string;
+  imageUrls: string[];
 }
 
 interface TabUrl {
@@ -204,6 +205,7 @@ const HistoryPage: React.FC = () => {
                   pageName={pageName as string}
                   tabUrlName={selectedTab.tabUrlName}
                   historyName={history.historyName}
+                  imageUrls={history.imageUrls}
                   onDelete={() =>
                     handleDeleteHistory(
                       userId as string,
