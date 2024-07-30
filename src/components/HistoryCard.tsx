@@ -33,9 +33,6 @@ const HistoryCard: React.FC<HistoryCardProps> = ({
           <h3 className="font-semibold">{createdAt}</h3>
           <p>{historyName}</p>
         </div>
-        {/* <button onClick={onDelete} className="text-red-500 hover:text-red-700">
-          x
-        </button> */}
       </div>
     </div>
   );
