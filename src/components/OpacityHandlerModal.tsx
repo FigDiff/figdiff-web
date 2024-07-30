@@ -18,13 +18,13 @@ const OpacityHandlerModal: React.FC<OpacityHandlerModalProps> = ({
     y: 0,
   });
   const [isDragging, setIsDragging] = useState(false);
-  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     setIsDragging(true);
-    setStartPos({
+    setStartPosition({
       x: event.clientX - position.x,
       y: event.clientY - position.y,
     });
@@ -33,8 +33,8 @@ const OpacityHandlerModal: React.FC<OpacityHandlerModalProps> = ({
   const handleMouseMove = (event: MouseEvent) => {
     if (isDragging) {
       setPosition({
-        x: event.clientX - startPos.x,
-        y: event.clientY - startPos.y,
+        x: event.clientX - startPosition.x,
+        y: event.clientY - startPosition.y,
       });
     }
   };
