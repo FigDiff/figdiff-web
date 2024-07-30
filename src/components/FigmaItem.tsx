@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 interface FigmaItemProps {
   pageName: string;
-  urlName: string[];
+  tabCount: number;
 }
 
-const FigmaItem: React.FC<FigmaItemProps> = ({ pageName, urlName }) => {
+const FigmaItem: React.FC<FigmaItemProps> = ({ pageName, tabCount }) => {
   const navigate = useNavigate();
 
   const handleItemClick = () => {
@@ -18,11 +18,7 @@ const FigmaItem: React.FC<FigmaItemProps> = ({ pageName, urlName }) => {
       onClick={handleItemClick}
     >
       <h2 className="font-bold text-xl mb-2">{pageName}</h2>
-      <ul>
-        {urlName.map((url, index) => (
-          <li key={index}>{url}</li>
-        ))}
-      </ul>
+      <p>저장된 리소스: {tabCount}개</p>
     </div>
   );
 };
