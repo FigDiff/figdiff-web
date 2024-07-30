@@ -30,8 +30,8 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
     <>
       <button
         className={`absolute top-0 right-0 m-0.5 p-0.5 bg-gray-100 hover:bg-gray-300 rounded-full ${className}`}
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={(event) => {
+          event.stopPropagation();
           handleToggleModal();
         }}
       >
