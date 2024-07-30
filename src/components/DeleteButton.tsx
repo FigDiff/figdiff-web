@@ -4,11 +4,22 @@ import { IoIosClose } from "react-icons/io";
 import DeleteModal from "./DeleteModal";
 
 interface DeleteButtonProps {
+  userId: string;
   pageName: string;
+  tabUrlName: string;
+  historyName: string;
   className: string;
+  onDelete: () => void;
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({ pageName, className }) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ({
+  userId,
+  pageName,
+  tabUrlName,
+  historyName,
+  className,
+  onDelete,
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleToggleModal = () => {
@@ -28,12 +39,14 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ pageName, className }) => {
       </button>
       {showModal && (
         <DeleteModal
+          userId={userId}
+          pageName={pageName}
+          tabUrlName={tabUrlName}
+          historyName={historyName}
           isOpen={showModal}
           onCancel={handleToggleModal}
-          onDelete={() => {
-            console.log(`${pageName} 페이지 삭제 처리`);
-            handleToggleModal();
-          }}
+          onDelete={onDelete}
+          onToggle={handleToggleModal}
         />
       )}
     </>
