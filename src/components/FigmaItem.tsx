@@ -22,8 +22,8 @@ const FigmaItem: React.FC<FigmaItemProps> = ({
     navigate(`/dash/${userId}/history/${pageName}`);
   };
 
-  const handleDeleteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleDeleteClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
     onDelete(pageName);
   };
 
