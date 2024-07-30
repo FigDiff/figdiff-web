@@ -14,8 +14,8 @@ export const routes: RouteConfig[] = [
     element: <Layout />,
     children: [
       { path: "/", element: <InitialPage /> },
-      { path: "/dash", element: <DashBoardPage /> },
-      { path: "/history/:pageName", element: <HistoryPage /> },
+      { path: "/dash/:userId", element: <DashBoardPage /> },
+      { path: "/dash/:userId/history/:pageName", element: <HistoryPage /> },
     ],
   },
 ];

@@ -1,13 +1,28 @@
 interface DeleteModalProps {
+  userId: string;
+  pageName: string;
+  tabUrlName: string;
+  historyName: string;
   isOpen: boolean;
   onCancel: () => void;
-  onDelete: () => void;
+  onDelete: (
+    userId: string,
+    pageName: string,
+    tabUrlName: string,
+    historyName: string,
+  ) => void;
+  onToggle: () => void;
 }
 
 const DeleteModal: React.FC<DeleteModalProps> = ({
+  userId,
+  pageName,
+  tabUrlName,
+  historyName,
   isOpen,
   onCancel,
   onDelete,
+  onToggle,
 }) => {
   if (!isOpen) return null;
 
@@ -16,9 +31,17 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
     onCancel();
   };
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    userId: string,
+    pageName: string,
+    tabUrlName: string,
+    historyName: string,
+  ) => {
     event.stopPropagation();
-    onDelete();
+
+    onDelete(userId, pageName, tabUrlName, historyName);
+    onToggle();
   };
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -33,7 +56,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
     >
       <div
         className="bg-white p-4 rounded-lg shadow-lg"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         <h2 className="text-lg font-bold mb-4">
           해당 콘텐츠를 삭제하시겠습니까?
@@ -47,7 +70,9 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
             취소
           </button>
           <button
-            onClick={handleDelete}
+            onClick={(event) =>
+              handleDelete(event, userId, pageName, tabUrlName, historyName)
+            }
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
             삭제
