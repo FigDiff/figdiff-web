@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import HistoryCard from "../components/HistoryCard";
+import DeleteButton from "../components/DeleteButton";
 import data from "../assets/mockData.json";
 
 interface TabUrl {
@@ -29,10 +30,11 @@ const HistoryPage: React.FC = () => {
           {pageData?.tabUrls.map((tab, index) => (
             <li
               key={index}
-              className="cursor-pointer hover:bg-gray-200 p-2"
+              className="relative cursor-pointer hover:bg-gray-200 p-2"
               onClick={() => setSelectedTab(tab)}
             >
-              {tab.urlName}
+              <span>{tab.urlName}</span>
+              <DeleteButton pageName={tab.urlName} className="top-2 right-0" />
             </li>
           ))}
         </ul>
