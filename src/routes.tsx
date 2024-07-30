@@ -1,6 +1,7 @@
 import Layout from "./components/Layout";
 import InitialPage from "./pages/InitialPage";
-import DashboardPage from "./pages/DashboardPage";
+import DashBoardPage from "./pages/DashBoardPage";
+import HistoryPage from "./pages/HistoryPage";
 
 interface RouteConfig {
   path?: string;
@@ -13,7 +14,8 @@ export const routes: RouteConfig[] = [
     element: <Layout />,
     children: [
       { path: "/", element: <InitialPage /> },
-      { path: "/dash", element: <DashboardPage /> },
+      { path: "/dash", element: <DashBoardPage /> },
+      { path: "/history/:pageName", element: <HistoryPage /> },
     ],
   },
 ];
