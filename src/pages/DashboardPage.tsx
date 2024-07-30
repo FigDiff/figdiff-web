@@ -14,7 +14,7 @@ const DashBoardPage: React.FC = () => {
           <FigmaItem
             key={page.pageName}
             pageName={page.pageName}
-            urlName={page.tabUrls.map((tab) => tab.urlName)}
+            tabCount={page.tabUrls.length}
           />
         ))}
       </div>
