@@ -22,8 +22,8 @@ const HistoryPage: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<TabUrl | null>(null);
 
   return (
-    <div className="flex w-full h-full">
-      <div className="w-1/4 border-r border-gray-300 p-4">
+    <div className="flex w-full min-h-screen">
+      <div className="w-1/4 border-r border-gray-300">
         <h2 className="text-lg font-semibold mb-4">{pageData?.pageName}</h2>
         <ul>
           {pageData?.tabUrls.map((tab, index) => (
