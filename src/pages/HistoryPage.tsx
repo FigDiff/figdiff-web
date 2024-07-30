@@ -43,7 +43,7 @@ const HistoryPage: React.FC = () => {
       }
     };
     fetchData();
-  }, [userId]);
+  }, []);
 
   if (!data) {
     return <div>Loading...</div>;

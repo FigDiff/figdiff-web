@@ -31,7 +31,6 @@ const HistoryCard: React.FC<HistoryCardProps> = ({
             onDelete={onDelete}
           />
           <h3 className="font-semibold">{createdAt}</h3>
-          <p>{historyName}</p>
         </div>
       </div>
     </div>
