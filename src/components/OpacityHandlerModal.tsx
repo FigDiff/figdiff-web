@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface OpacityHandlerModalProps {
   screenshotOpacity: number;
@@ -43,7 +43,7 @@ const OpacityHandlerModal: React.FC<OpacityHandlerModalProps> = ({
     setIsDragging(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isDragging) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
