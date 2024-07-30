@@ -1,14 +1,15 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
 
 import FigDiffLogo from "/logo.png";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const { userId } = useParams();
   const location = useLocation();
 
   const handleHomeClick = () => {
-    navigate("/dash");
+    navigate(`/dash/${userId}`);
   };
 
   const isInitialPage = location.pathname === "/";
