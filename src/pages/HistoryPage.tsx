@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import HistoryCard from "../components/HistoryCard";
 import DeleteButton from "../components/DeleteButton";
 import axios from "axios";
 
+interface History {
+  date: string;
+  historyName: string;
+}
+
 interface TabUrl {
   tabUrlName: string;
-  history: { date: string; historyName: string }[];
+  history: History[];
 }
 
 interface PageData {
@@ -15,8 +19,12 @@ interface PageData {
   tabUrls: TabUrl[];
 }
 
+interface UserData {
+  pageNames: PageData[];
+}
+
 const HistoryPage: React.FC = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<UserData | null>(null);
   const { pageName, userId } = useParams<{
     pageName: string;
     userId: string;
@@ -29,13 +37,11 @@ const HistoryPage: React.FC = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_SERVER_URL}/${userId}`,
         );
-
         setData(response.data.userData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -44,7 +50,7 @@ const HistoryPage: React.FC = () => {
   }
 
   const pageData = data.pageNames.find(
-    (page) => page.pageName === pageName,
+    (page: PageData) => page.pageName === pageName,
   ) as PageData;
 
   const handleDeleteTabUrl = async (
@@ -64,19 +70,21 @@ const HistoryPage: React.FC = () => {
       setData((prevData) => {
         if (!prevData) return null;
 
+        const updatedPageNames = prevData.pageNames.map((page) => {
+          if (page.pageName === pageName) {
+            return {
+              ...page,
+              tabUrls: page.tabUrls.filter(
+                (tab) => tab.tabUrlName !== tabUrlName,
+              ),
+            };
+          }
+          return page;
+        });
+
         return {
           ...prevData,
-          pageNames: prevData.pageNames.map((page) => {
-            if (page.pageName === pageName) {
-              return {
-                ...page,
-                tabUrls: page.tabUrls.filter(
-                  (tab) => tab.tabUrlName !== tabUrlName,
-                ),
-              };
-            }
-            return page;
-          }),
+          pageNames: updatedPageNames,
         };
       });
 
@@ -107,31 +115,44 @@ const HistoryPage: React.FC = () => {
       setData((prevData) => {
         if (!prevData) return null;
 
+        const updatedPageNames = prevData.pageNames.map((page) => {
+          if (page.pageName === pageName) {
+            return {
+              ...page,
+              tabUrls: page.tabUrls.map((tab) => {
+                if (tab.tabUrlName === tabUrlName) {
+                  return {
+                    ...tab,
+                    history: tab.history.filter(
+                      (history) => history.historyName !== historyName,
+                    ),
+                  };
+                }
+                return tab;
+              }),
+            };
+          }
+          return page;
+        });
+
         return {
           ...prevData,
-          pageNames: prevData.pageNames.map((page) => {
-            if (page.pageName === pageName) {
-              return {
-                ...page,
-                tabUrls: page.tabUrls.map((tab) => {
-                  if (tab.tabUrlName === selectedTab.tabUrlName) {
-                    return {
-                      ...tab,
-                      history: tab.history.filter(
-                        (history) => history.historyName !== historyName,
-                      ),
-                    };
-                  }
-                  return tab;
-                }),
-              };
-            }
-            return page;
-          }),
+          pageNames: updatedPageNames,
+        };
+      });
+
+      setSelectedTab((prevTab) => {
+        if (!prevTab) return null;
+
+        return {
+          ...prevTab,
+          history: prevTab.history.filter(
+            (history) => history.historyName !== historyName,
+          ),
         };
       });
     } catch (error) {
-      console.error("히스토리 삭제 오류:", error);
+      console.error("Error deleting history:", error);
     }
   };
 
@@ -143,16 +164,24 @@ const HistoryPage: React.FC = () => {
           {pageData?.tabUrls.map((tab, index) => (
             <li
               key={index}
+              onClick={() => setSelectedTab(tab)}
               className="relative cursor-pointer hover:bg-gray-200 p-2"
             >
-              <span onClick={() => setSelectedTab(tab)}>{tab.tabUrlName}</span>
+              <span>{tab.tabUrlName}</span>
               <DeleteButton
                 userId={userId as string}
                 pageName={pageName as string}
                 tabUrlName={tab.tabUrlName}
                 historyName="void"
                 className="top-2 right-0"
-                onDelete={handleDeleteTabUrl}
+                onDelete={() =>
+                  handleDeleteTabUrl(
+                    userId as string,
+                    pageName as string,
+                    tab.tabUrlName,
+                    "void",
+                  )
+                }
               />
             </li>
           ))}
@@ -173,7 +202,14 @@ const HistoryPage: React.FC = () => {
                   pageName={pageName as string}
                   tabUrlName={selectedTab.tabUrlName}
                   historyName={history.historyName}
-                  onDelete={handleDeleteHistory}
+                  onDelete={() =>
+                    handleDeleteHistory(
+                      userId as string,
+                      pageName as string,
+                      selectedTab.tabUrlName,
+                      history.historyName,
+                    )
+                  }
                 />
               ))}
             </div>
