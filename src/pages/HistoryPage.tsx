@@ -141,25 +141,12 @@ const HistoryPage: React.FC = () => {
         <h2 className="text-lg font-semibold mb-4">{pageData?.pageName}</h2>
         <ul>
           {pageData?.tabUrls.map((tab, index) => (
-            // <li
-            //   key={index}
-            //   className="relative cursor-pointer hover:bg-gray-200 p-2 flex justify-between items-center"
-            // >
-            //   <span onClick={() => setSelectedTab(tab)}>{tab.tabUrlName}</span>
-            //   <button
-            //     className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-            //     onClick={() => handleDeleteTabUrl(tab.tabUrlName)}
-            //   >
-            //     X
-            //   </button>
-            // </li>
             <li
               key={index}
               className="relative cursor-pointer hover:bg-gray-200 p-2"
             >
               <span onClick={() => setSelectedTab(tab)}>{tab.tabUrlName}</span>
               <DeleteButton
-                // pageName={tab.tabUrlName}
                 userId={userId as string}
                 pageName={pageName as string}
                 tabUrlName={tab.tabUrlName}
@@ -182,7 +169,6 @@ const HistoryPage: React.FC = () => {
                 <HistoryCard
                   key={index}
                   createdAt={history.date}
-                  // description={history.historyName}
                   userId={userId as string}
                   pageName={pageName as string}
                   tabUrlName={selectedTab.tabUrlName}
