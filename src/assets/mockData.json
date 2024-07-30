@@ -1,0 +1,67 @@
+{
+  "userId": "939132111231231231231232312",
+  "pageNames": [
+    {
+      "pageName": "client.figci.net",
+      "tabUrls": [
+        {
+          "urlName": "/hello",
+          "history": [
+            {
+              "historyName": "2024. 7. 29. 오후 9:35:06",
+              "imageUrls": [
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506245-8443869c-ab5f-4897-b30c-7bd7d39f12cd-icons8-github-120.png",
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506246-0ce913d8-8eaa-4f0e-8ba4-21474ad28fce-icons8-phone-90.png"
+              ],
+              "date": "2024. 7. 29. 오후 9:34:41"
+            }
+          ]
+        },
+        {
+          "urlName": "/bye",
+          "history": [
+            {
+              "historyName": "2024. 7. 30. 오전 10:35:06",
+              "imageUrls": [
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506245-8443869c-ab5f-4897-b30c-7bd7d39f12cd-icons8-github-120.png",
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506246-0ce913d8-8eaa-4f0e-8ba4-21474ad28fce-icons8-phone-90.png"
+              ],
+              "date": "2024. 7. 29. 오후 9:34:41"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageName": "naver.com",
+      "tabUrls": [
+        {
+          "urlName": "/main",
+          "history": [
+            {
+              "historyName": "2024. 7. 29. 오후 9:35:06",
+              "imageUrls": [
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506245-8443869c-ab5f-4897-b30c-7bd7d39f12cd-icons8-github-120.png",
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506246-0ce913d8-8eaa-4f0e-8ba4-21474ad28fce-icons8-phone-90.png"
+              ],
+              "date": "2024. 7. 29. 오후 9:34:41"
+            }
+          ]
+        },
+        {
+          "urlName": "/profile",
+          "history": [
+            {
+              "historyName": "2024. 7. 30. 오전 10:35:06",
+              "imageUrls": [
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506245-8443869c-ab5f-4897-b30c-7bd7d39f12cd-icons8-github-120.png",
+                "https://figdiff.s3.ap-northeast-2.amazonaws.com/1722256506246-0ce913d8-8eaa-4f0e-8ba4-21474ad28fce-icons8-phone-90.png"
+              ],
+              "date": "2024. 7. 29. 오후 9:34:41"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
