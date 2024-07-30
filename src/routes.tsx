@@ -1,6 +1,6 @@
 import Layout from "./components/Layout";
 import InitialPage from "./pages/InitialPage";
-import DashBoardPage from "./pages/DashBoardPage";
+import DashBoardPage from "./pages/DashboardPage";
 import HistoryPage from "./pages/HistoryPage";
 
 interface RouteConfig {
