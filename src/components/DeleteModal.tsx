@@ -56,7 +56,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
     >
       <div
         className="bg-white p-4 rounded-lg shadow-lg"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         <h2 className="text-lg font-bold mb-4">
           해당 콘텐츠를 삭제하시겠습니까?
@@ -70,8 +70,8 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
             취소
           </button>
           <button
-            onClick={(ev) =>
-              handleDelete(ev, userId, pageName, tabUrlName, historyName)
+            onClick={(event) =>
+              handleDelete(event, userId, pageName, tabUrlName, historyName)
             }
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
