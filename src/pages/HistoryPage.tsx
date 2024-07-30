@@ -5,11 +5,13 @@ import DeleteButton from "../components/DeleteButton";
 import axios from "axios";
 
 interface History {
+  _id: string;
   date: string;
   historyName: string;
 }
 
 interface TabUrl {
+  _id: string;
   tabUrlName: string;
   history: History[];
 }
@@ -161,9 +163,9 @@ const HistoryPage: React.FC = () => {
       <div className="w-1/4 border-r border-gray-300">
         <h2 className="text-lg font-semibold mb-4">{pageData?.pageName}</h2>
         <ul>
-          {pageData?.tabUrls.map((tab, index) => (
+          {pageData?.tabUrls.map((tab) => (
             <li
-              key={index}
+              key={tab._id}
               onClick={() => setSelectedTab(tab)}
               className="relative cursor-pointer hover:bg-gray-200 p-2"
             >
@@ -194,9 +196,9 @@ const HistoryPage: React.FC = () => {
               History for {selectedTab.tabUrlName}
             </h3>
             <div className="flex flex-wrap">
-              {selectedTab.history.map((history, index) => (
+              {selectedTab.history.map((history) => (
                 <HistoryCard
-                  key={index}
+                  key={history._id}
                   createdAt={history.date}
                   userId={userId as string}
                   pageName={pageName as string}
