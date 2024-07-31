@@ -82,7 +82,7 @@ const OpacityHandlerModal: React.FC<OpacityHandlerModalProps> = ({
             className="range range-primary"
             onMouseDown={(event) => event.stopPropagation()}
           />
-          <div className="text-center">Screenshot Opacity</div>
+          <div className="text-center">WebPage Opacity</div>
         </div>
         <div>
           <input
@@ -94,7 +94,7 @@ const OpacityHandlerModal: React.FC<OpacityHandlerModalProps> = ({
             className="range range-primary"
             onMouseDown={(event) => event.stopPropagation()}
           />
-          <div className="text-center">Figma Opacity</div>
+          <div className="text-center">Figma Design Opacity</div>
         </div>
       </div>
     </div>
