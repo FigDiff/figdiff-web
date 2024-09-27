@@ -32,7 +32,7 @@ const HistoryCard: React.FC<HistoryCardProps> = ({
       onClick={() => {
         handleImageModal();
       }}
-      className="relative bg-white p-4 shadow rounded-lg m-2 flex-1 max-w-xs"
+      className="relative cursor-pointer bg-white p-4 shadow rounded-lg m-2 flex-1 max-w-xs"
     >
       <div className="flex justify-between items-center">
         <div>

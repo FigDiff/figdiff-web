@@ -39,11 +39,26 @@ const FigmaItem: React.FC<FigmaItemProps> = ({
 
   return (
     <div
-      className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative"
+      className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative cursor-pointer"
+      style={{
+        maxWidth: "300px",
+        overflow: "hidden",
+      }}
       onClick={handleItemClick}
     >
-      <h2 className="font-bold text-xl mb-2">{pageName}</h2>
-      <p>저장된 리소스: {tabCount}개</p>
+      <h2
+        className="font-bold text-lg mb-2 text-gray-800"
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "100%",
+        }}
+        title={pageName}
+      >
+        {pageName}
+      </h2>
+      <p className="text-sm text-gray-600">저장된 리소스: {tabCount}개</p>
       <button
         onClick={handleDeleteClick}
         className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white text-2xl font-bold py-1 px-2 rounded"
