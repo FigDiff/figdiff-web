@@ -2,6 +2,8 @@ import Layout from "./components/Layout";
 import InitialPage from "./pages/InitialPage";
 import DashBoardPage from "./pages/DashboardPage";
 import HistoryPage from "./pages/HistoryPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ForbiddenPage from "./pages/ForbiddenPage";
 
 interface RouteConfig {
   path?: string;
@@ -16,6 +18,8 @@ export const routes: RouteConfig[] = [
       { path: "/", element: <InitialPage /> },
       { path: "/dash/:userId", element: <DashBoardPage /> },
       { path: "/dash/:userId/history/:pageName", element: <HistoryPage /> },
+      { path: "/dash/:userId/notfoundpage", element: <NotFoundPage /> },
+      { path: "/dash/:userId/forbiddenpage", element: <ForbiddenPage /> },
     ],
   },
 ];
