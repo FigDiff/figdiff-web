@@ -160,23 +160,25 @@ const HistoryPage: React.FC = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen">
-      <div className="w-1/4 border-r border-gray-300">
+    <div className="flex flex-col md:flex-row w-full min-h-screen">
+      <div className="w-full md:w-1/4 border-b md:border-r md:border-b-0 border-gray-300 p-4 md:p-0">
         <h2 className="text-lg font-semibold mb-4">{pageData?.pageName}</h2>
         <ul>
           {pageData?.tabUrls.map((tab) => (
             <li
               key={tab._id}
               onClick={() => setSelectedTab(tab)}
-              className="relative cursor-pointer hover:bg-gray-200 p-2"
+              className="relative cursor-pointer hover:bg-gray-200 p-2 transition-all duration-150"
             >
-              <span>{tab.tabUrlName}</span>
+              <span className="block truncate max-w-full">
+                {tab.tabUrlName}
+              </span>
               <DeleteButton
                 userId={userId as string}
                 pageName={pageName as string}
                 tabUrlName={tab.tabUrlName}
                 historyName="void"
-                className="top-2 right-0"
+                className="absolute top-2 right-0"
                 onDelete={() =>
                   handleDeleteTabUrl(
                     userId as string,
@@ -190,13 +192,13 @@ const HistoryPage: React.FC = () => {
           ))}
         </ul>
       </div>
-      <div className="w-3/4 p-4">
+      <div className="w-full md:w-3/4 pl-4">
         {selectedTab ? (
           <>
             <h3 className="text-lg font-semibold mb-4">
               History for {selectedTab.tabUrlName}
             </h3>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {selectedTab.history.map((history) => (
                 <HistoryCard
                   key={history._id}
